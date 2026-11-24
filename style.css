@@ -74,3 +74,51 @@ footer{padding-bottom:90px}
 .donate-account{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}.donate-account>span{font:600 17px var(--mono);letter-spacing:1px}.donate-account button{border:1px solid var(--line);background:var(--surface2);border-radius:20px;padding:7px 12px;font-size:10px;color:var(--accent)}
 .donate-thanks{text-align:center;color:var(--muted);font-size:12px;margin:25px 0 0}#donate-status{min-height:24px;text-align:center;font-size:12px;color:var(--accent);margin:10px 0 0}.donate-image-error{font-size:11px;color:var(--muted)}
 @media(max-width:680px){.donate-section{padding:20px 22px 35px}.donate-cards{grid-template-columns:1fr;gap:18px}.donate-card{padding:23px}.donate-section .section-head>p{max-width:none}.nav nav .donate-nav{display:inline;font-size:10px}.donate-thanks{font-size:11px}}
+
+body,.card,.portrait-window,.contact,.donate-card,.music-panel,#flappy-panel,.ticker{transition:background-color .3s ease,border-color .3s ease,color .25s ease,box-shadow .25s ease}
+button,.button,.contact-links>a{transition:transform .18s cubic-bezier(.2,.8,.2,1),background-color .22s ease,color .2s ease,box-shadow .22s ease}
+button:active,.button:active,.contact-links>a:active{transform:scale(.96)}
+.audio-controls .audio-play{display:grid;place-items:center;line-height:1;padding:0}
+.audio-play svg{display:block;width:22px;height:22px;pointer-events:none}
+.audio-play .play-icon{transform:translateX(1.5px)}
+#music-panel,#flappy-panel{transform-origin:bottom center}
+@media(prefers-reduced-motion:reduce){body,.card,.portrait-window,.contact,.donate-card,.music-panel,#flappy-panel,.ticker,button,.button,.contact-links>a{transition:none!important}button:active,.button:active,.contact-links>a:active{transform:none}}
+
+.contact.centered-contact{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;padding:48px 24px 42px}
+.centered-contact h2{font-size:32px;margin:12px 0 28px;line-height:1.4}
+.contact-socials{display:flex;align-items:center;justify-content:center;gap:28px;margin-bottom:28px}
+.contact-socials a{display:flex;flex-direction:column;align-items:center;gap:9px;font:10px var(--mono);color:var(--muted);transition:color .2s ease,transform .2s ease}
+.contact-icon{display:grid;place-items:center;width:55px;height:55px;border:1px solid var(--line);border-radius:19px;background:var(--surface2);color:var(--accent);transition:background-color .2s ease,box-shadow .2s ease}
+.contact-icon svg{width:25px;height:25px}.contact-socials a:hover{color:var(--accent);transform:translateY(-3px)}.contact-socials a:hover .contact-icon{box-shadow:0 6px 18px #9d618b16}.contact-socials a:active{transform:scale(.95)}
+.contact-gmail{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border:1px solid var(--line);border-radius:30px;background:var(--surface2);font-size:13px;max-width:100%;transition:transform .2s ease,background-color .2s ease}
+.contact-gmail>svg{width:19px;height:19px;flex-shrink:0;color:var(--accent)}.contact-gmail>span:last-child{color:var(--accent)}.contact-gmail:hover{transform:translateY(-2px)}.contact-gmail:active{transform:scale(.97)}
+.gmail-hint{font-size:10px;color:var(--muted);margin-top:10px}
+@media(max-width:680px){.contact.centered-contact{padding:35px 16px}.centered-contact h2{font-size:28px}.contact-gmail{font-size:11px;padding:12px 14px;gap:8px}.contact-socials{gap:25px}}
+@media(prefers-reduced-motion:reduce){.contact-socials a,.contact-icon,.contact-gmail{transition:none}.contact-socials a:hover,.contact-socials a:active,.contact-gmail:hover,.contact-gmail:active{transform:none}}
+
+.donate-qr .donate-qr-art{display:block;position:relative;margin:0;width:100%;line-height:0}
+.donate-qr .donate-qr-art[hidden]{display:none}
+.donate-qr .donate-qr-art>.donate-qr-avatar{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:12%;height:auto;aspect-ratio:1;object-fit:contain;border:2px solid #fff;background:#fff;border-radius:50%;padding:0;pointer-events:none}
+
+/* Center the logo box on the square QR, crop outer portrait whitespace. */
+.donate-qr .donate-qr-art{aspect-ratio:1;display:grid;place-items:center}
+.donate-qr .donate-qr-art>.donate-qr-code{grid-area:1/1;width:100%;height:100%;margin:0;display:block;object-fit:contain}
+.donate-qr .donate-qr-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:18%;aspect-ratio:1;background:#fff;border:2px solid #fff;border-radius:6px;overflow:hidden;display:block;line-height:0;pointer-events:none}
+.donate-qr .donate-qr-logo>.donate-qr-avatar{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150%;height:150%;max-width:none;aspect-ratio:1;object-fit:cover;margin:0;padding:0;border:0;border-radius:0;background:#fff}
+
+.donate-qr .donate-qr-logo>.donate-qr-avatar{width:100%;height:100%;object-fit:contain;border:0;padding:0;border-radius:0}
+
+#pixel-pet{position:fixed;top:0;left:0;z-index:19;width:64px;height:64px;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;line-height:0;transition:filter .2s ease;overflow:visible}
+#pixel-pet:hover{filter:drop-shadow(0 2px 5px #c77ba644)}
+#pixel-pet:active{transform:none}
+#pixel-pet.dragging{cursor:grabbing;filter:drop-shadow(0 8px 5px #71405940)}
+#pixel-pet canvas{display:block;width:64px;height:64px;image-rendering:pixelated;pointer-events:none}
+#pixel-pet:focus-visible{outline:2px dashed var(--accent);outline-offset:4px;border-radius:12px}
+.pet-bubble{position:absolute;bottom:100%;left:50%;transform:translate(-50%,5px);border:1px solid var(--line);border-radius:12px;padding:7px 10px;background:var(--bg);color:var(--ink);font:10px/1.4 var(--mono);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease}
+.pet-bubble.visible{opacity:1;transform:translate(-50%,-3px)}
+@media(prefers-reduced-motion:reduce){#pixel-pet,.pet-bubble{transition:none}}
+
+#pixel-pet{width:96px;height:96px}
+#pixel-pet canvas{width:96px;height:96px;image-rendering:auto}
+
+#pixel-pet canvas{image-rendering:pixelated;image-rendering:crisp-edges}

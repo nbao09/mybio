@@ -66,7 +66,7 @@ if(state==='ready'||state==='paused'){state='running';last=0}
 bird.v=-285;schedule();draw();
 }
 function setOpen(value){
-open=value;$('#flappy-panel').hidden=!value;$('#flappy-toggle').setAttribute('aria-expanded',String(value));
+open=value;window.nbaoUI.setPanel($('#flappy-panel'),value);$('#flappy-toggle').setAttribute('aria-expanded',String(value));
 if(value){
 const musicClose=$('#music-close');if(musicClose&&!$('#music-panel').hidden)musicClose.click();
 scores();draw();canvas.focus();

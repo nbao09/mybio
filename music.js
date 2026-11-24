@@ -26,7 +26,7 @@ $('#music-toggle-label').textContent=s.toggle;
 $('#music-heading').textContent=s.heading;
 $('#music-close').setAttribute('aria-label',s.close);
 for(const [id,key] of [['audio-prev','prev'],['audio-next','next'],['audio-back','back'],['audio-forward','forward'],['audio-progress','seek']]) $('#'+id).setAttribute('aria-label',s[key]);
-$('#audio-play').textContent=audio.paused?'▶':'Ⅱ';
+$('#audio-play').innerHTML=audio.paused?"<svg class=\"play-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M7 4.9c0-.75.82-1.22 1.47-.84l11.04 6.3c.65.38.65 1.31 0 1.68L8.47 18.35A.97.97 0 0 1 7 17.5V4.9Z\" transform=\"translate(0 1)\"/></svg>":'Ⅱ';
 $('#audio-play').setAttribute('aria-label',audio.paused?s.play:s.pause);
 $('#audio-play').setAttribute('aria-pressed',String(!audio.paused));
 $('#audio-status').textContent=status?s[status]:'';
@@ -58,8 +58,8 @@ status='';
 renderPlaylist();updateProgress();updateLabels();
 if(start)play();
 }
-function open(value){$('#music-panel').hidden=!value;$('#music-toggle').setAttribute('aria-expanded',String(value))}
-$('#music-toggle').addEventListener('click',()=>open($('#music-panel').hidden));
+function open(value){window.nbaoUI.setPanel($('#music-panel'),value);$('#music-toggle').setAttribute('aria-expanded',String(value))}
+$('#music-toggle').addEventListener('click',()=>open($('#music-toggle').getAttribute('aria-expanded')!=='true'));
 $('#music-close').addEventListener('click',()=>{open(false);$('#music-toggle').focus()});
 $('.music-widget').addEventListener('keydown',e=>{if(e.key==='Escape'){open(false);$('#music-toggle').focus()}});
 $('#audio-play').addEventListener('click',()=>{if(audio.paused)play();else{request++;audio.pause()}});
